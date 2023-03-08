@@ -1,16 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const authors = require('../services/authors');
+const authorsController = require('../controllers/authors');
 
 /* GET programming languages. */
-router.get('/', async function (req, res, next) {
-	console.log('req', req);
-	try {
-		res.json(await authors.getMultiple(req.query.page));
-	} catch (err) {
-		console.error(`Error while getting authors `, err.message);
-		next(err);
-	}
-});
+router.get('/', authorsController.getBooks);
 
 module.exports = router;
