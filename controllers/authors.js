@@ -1,6 +1,15 @@
 const authors = require('../services/authors');
 
-const getBooks = async (req, res) => {
+const postAuthor = async (req, res, next) => {
+	try {
+		res.json(await authors.create(req.body));
+	} catch (err) {
+		console.error(`Error while creating author `, err.message);
+		next(err);
+	}
+};
+
+const getAuthors = async (req, res, next) => {
 	try {
 		res.json(await authors.getMultiple(req.query.page));
 	} catch (err) {
@@ -10,5 +19,6 @@ const getBooks = async (req, res) => {
 };
 
 module.exports = {
-	getBooks,
+	getAuthors,
+	postAuthor,
 };
