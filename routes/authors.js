@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authorsController = require('../controllers/authors');
 
-/* GET programming languages. */
-router.get('/', authorsController.getBooks);
+router.get('/', authorsController.getAuthors);
+router.post('/', authorsController.postAuthor);
 
 module.exports = router;
